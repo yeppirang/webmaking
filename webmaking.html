@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 가입과 문서 관리</title>
+    <style>
+        /* 간단한 스타일링 예시 - 실제로는 더 많은 디자인이 필요합니다. */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 회원 가입 폼 -->
+    <form id="signupForm">
+        <h2>회원 가입</h2>
+        <label for="username">사용자 이름:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="email">이메일:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">비밀번호:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">가입</button>
+    </form>
+
+    <!-- 문서 레이아웃 -->
+    <article>
+        <h1>문서 제목</h1>
+        <h2>소제목</h2>
+        <p>본문 내용이 여기에 들어갑니다. 수정 버튼을 통해 내용을 수정할 수 있습니다.</p>
+        <button onclick="editDocument()">수정</button>
+    </article>
+
+    <!-- 수정 폼 - 초기에는 숨겨져 있음 -->
+    <form id="editForm" style="display: none;">
+        <h2>문서 수정</h2>
+        <label for="documentTitle">제목:</label>
+        <input type="text" id="documentTitle" name="documentTitle" required>
+        
+        <label for="documentSubtitle">소제목:</label>
+        <input type="text" id="documentSubtitle" name="documentSubtitle">
+
+        <label for="documentContent">본문:</label>
+        <textarea id="documentContent" name="documentContent" required></textarea>
+
+        <button type="submit">저장</button>
+    </form>
+
+    <script>
+        function editDocument() {
+            // 수정 폼을 표시하고, 현재 문서의 정보를 가져와서 폼에 채웁니다.
+            document.getElementById("editForm").style.display = "block";
+            document.getElementById("documentTitle").value = document.querySelector("article h1").innerText;
+            document.getElementById("documentSubtitle").value = document.querySelector("article h2").innerText;
+            document.getElementById("documentContent").value = document.querySelector("article p").innerText;
+        }
+    </script>
+</body>
+</html>
